@@ -1,0 +1,12 @@
+[local]
+name=Local RPM Repository
+baseurl=http://192.168.33.30/rpms/rhel/7/RPMS/$basearch/
+gpgcheck=0
+enabled=1
+
+[local-noarch]
+name=Local RPM Repository
+baseurl=http://192.168.33.30/rpms/rhel/7/RPMS/noarch/
+gpgcheck=0
+enabled=1
+
