@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
     vb.cpus   = 2
   end
 
+  config.vm.provision "shell", path: ".provision/do_provision.sh"
 end
 
 # vim: set ai nu nobk expandtab sw=2 tw=72 ts=4 syntax=ruby :
