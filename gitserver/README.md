@@ -1,8 +1,12 @@
 # Introduction
 Dockerize gitolite, cgit and Apache to hosting massive Git repositories.
 The container is expected to mount the volume to store repositories,
-config and logs on host. The logical name in the container is
-/var/lib/gitolite3.
+config and logs on host directory. The volume name in the container is
+/var/lib/gitolite3. The published image can be found [here][4].
+
+# Pre-requisite
+This image installs custom-made [gitolite3][1], [git][2] and [cgit][3]
+RPM to reduce overall image size.
 
 # Build
 The instruction to build the docker image is as follows:
@@ -83,3 +87,8 @@ gid 888.
 | Port                 | Description                            |
 | -------------------- | -------------------------------------- |
 | 8080                 | Apache run on non-privileged 8080      |
+
+[1]: https://github.com/schnell18/packaging/tree/master/gitolite
+[2]: https://github.com/schnell18/packaging/tree/master/git
+[3]: https://github.com/schnell18/packaging/tree/master/cgit
+[4]: https://registry.hub.docker.com/u/schnell18/gitserver/

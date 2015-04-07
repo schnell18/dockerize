@@ -17,11 +17,18 @@ ADD httpd_git.conf /etc/httpd/conf/
 ADD cgitrc /etc/
 ADD gitolite-wrapper.sh /var/www/cgi-bin/
 ADD startup.sh /usr/bin/
+RUN getent group git >/dev/null || groupadd -r -g 888 git
+RUN getent passwd git >/dev/null ||  \
+    useradd -r -o -u 888 -g git      \
+    -d /var/lib/gitolite3 -s /bin/sh \
+    -c "Git repository owner" git
 RUN    chown -R git.git /var/cache/cgit              \
     && chmod +x /usr/bin/startup.sh                  \
     && chmod +x /var/www/cgi-bin/gitolite-wrapper.sh
 
 VOLUME /var/lib/gitolite3
+
+USER git
 
 EXPOSE 8080
 
